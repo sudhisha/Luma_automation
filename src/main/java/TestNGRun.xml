@@ -5,8 +5,9 @@
 <suite name="Luma Automation" parallel="classes">
     <test name="Regression Test">
         <classes>
-<!--            <class name="MainClass_Pages.Main_Login"></class>-->
-<!--            <class name="MainClass_Pages.Main_SignUp"></class>-->
+            <class name="MainClass_Pages.Main_Login"></class>
+            <class name="MainClass_Pages.Main_SignUp"></class>
+            <class name="MainClass_Pages.Main_Account"></class>
             <class name="MainClass_Pages.Main_Logout"></class>
         </classes>
     </test>

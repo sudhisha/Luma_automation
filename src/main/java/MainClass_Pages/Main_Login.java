@@ -26,8 +26,8 @@ public class Main_Login {
         obj.signin();
         JavascriptExecutor js =(JavascriptExecutor) driver;
         js.executeScript("window.scrollBy(200,300)");
-        obj.enter_username("meeran1996@gmail.com");
-        obj.enter_password("Meeran@1996");
+        obj.enter_username("deepikak1996@gmail.com");
+        obj.enter_password("Deepikak@1996");
         obj.clickOnlogin();
     }
     @Test(priority = 2)
