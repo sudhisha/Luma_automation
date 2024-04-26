@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <!--https://github.com/sudhisha/Luma_automation.git-->
+<!--        https://github.com/sudhisha/Luma_automation-->
 <suite name="Luma Automation" parallel="classes">
     <test name="Regression Test">
         <classes>
