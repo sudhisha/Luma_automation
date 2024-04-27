@@ -15,8 +15,8 @@ public class MyAccount {
         this.driver = driver;
     }
     By customer_dropdown = By.xpath("/html/body/div[2]/header/div[1]/div/ul/li[2]/span/button");
-
-
+    By myaccount = By.xpath("/html/body/div[2]/header/div[1]/div/ul/li[2]/div/ul/li[1]/a");
+    By edit = By.xpath("//*[@id=\"maincontent\"]/div[2]/div[1]/div[4]/div[2]/div/div[2]/a[1]/span");
     public void login_with_valid_inputs(){
         Login obj = new Login(driver);
         obj.signin();
@@ -30,4 +30,11 @@ public class MyAccount {
     public void click_customer_dropdown(){
         driver.findElement(customer_dropdown).click();
     }
+    public void click_Myaccount(){
+        driver.findElement(myaccount).click();
+    }
+    public void click_edit_link(){
+        driver.findElement(edit).click();
+    }
+
 }

@@ -2,6 +2,7 @@ package MainClass_Pages;
 
 
 import Pages.MyAccount;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.*;
@@ -22,6 +23,10 @@ public class Main_Account {
         MyAccount myacc = new MyAccount(driver);
         myacc.login_with_valid_inputs();
         myacc.click_customer_dropdown();
+        myacc.click_Myaccount();
+        JavascriptExecutor js =(JavascriptExecutor) driver;
+        js.executeScript("window.scrollBy(150,200)");
+        myacc.click_edit_link();
     }
     @AfterTest
     public void CloseDriver() throws InterruptedException {
