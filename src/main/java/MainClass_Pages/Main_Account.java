@@ -27,6 +27,7 @@ public class Main_Account {
         JavascriptExecutor js =(JavascriptExecutor) driver;
         js.executeScript("window.scrollBy(150,200)");
         myacc.click_edit_link();
+        System.out.println("testing");
     }
     @AfterTest
     public void CloseDriver() throws InterruptedException {
