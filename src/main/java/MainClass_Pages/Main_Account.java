@@ -67,9 +67,36 @@ public class Main_Account {
         myacc.Click_addressBook();
         JavascriptExecutor js = (JavascriptExecutor)driver;
         js.executeScript("window.scrollBy(400,500)");
-        myacc.verify_firstname("Deepika");
-        myacc.verify_lastname("K");
-
+        try {
+            myacc.verify_firstname("Deepika");
+            myacc.verify_lastname("K");
+            myacc.enter_company("TCS");
+            myacc.enter_phone_number("9898989898");
+            myacc.enter_street_address("Deepika Nivas", "Irinjalakuda", "Thrissur");
+            myacc.enter_city("Irinjalakuda");
+            myacc.enter_country("India");
+            myacc.enter_zip("678765");
+            myacc.enter_state("Kerala");
+            js.executeScript("window.scrollBy(450,530)");
+            myacc.click_save_address();
+        }
+        catch(Exception e){
+            js.executeScript("window.scrollTo(0,document.body.scrollHeight)");
+            myacc.click_add_new_address();
+            myacc.verify_firstname("Deepika");
+            myacc.verify_lastname("K");
+            myacc.enter_company("TCS");
+            myacc.enter_phone_number("9898989898");
+            myacc.enter_street_address("Deepika Nivas", "Irinjalakuda", "Thrissur");
+            myacc.enter_city("Irinjalakuda");
+            myacc.enter_country("India");
+            myacc.enter_zip("678765");
+            myacc.enter_state("Kerala");
+            js.executeScript("window.scrollBy(450,530)");
+            myacc.def_billing();
+            myacc.def_shipping();
+            myacc.click_save_address();
+        }
     }
 //    @AfterTest
 //    public void CloseDriver() throws InterruptedException {
