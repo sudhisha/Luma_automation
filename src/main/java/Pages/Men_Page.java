@@ -13,11 +13,13 @@ public class Men_Page {
     }
     By men = By.id("ui-id-5");
     By tops = By.id("ui-id-17");
+    By bottoms = By.id("ui-id-18");
     By hoodie = By.id("ui-id-20");
     By jacket = By.id("ui-id-19");
     By tees = By.id("ui-id-21");
     By tanks = By.id("ui-id-22");
-
+    By pants = By.id("ui-id-23");
+    By shorts = By.id("ui-id-24");
     public void login_with_valid_inputs(){
         Login obj = new Login(driver);
         obj.signin();
@@ -67,6 +69,27 @@ public class Men_Page {
     public void Verify_tanks_page_title(String title){
         if(driver.getTitle().contains(title)){
             System.out.println("Landed on the Tanks - Tops - Men Page successfully");
+        }
+    }
+    public void select_bottom(){
+        WebElement btm = driver.findElement(bottoms);
+        Actions ac = new Actions(driver);
+        ac.moveToElement(btm).perform();
+    }
+    public void click_pants(){
+        driver.findElement(pants).click();
+    }
+    public void Verify_pants_page_title(String title){
+        if(driver.getTitle().contains(title)){
+            System.out.println("Landed on the Pants - Bottoms - Men Page successfully");
+        }
+    }
+    public void click_shorts(){
+        driver.findElement(shorts).click();
+    }
+    public void Verify_shorts_page_title(String title){
+        if(driver.getTitle().contains(title)){
+            System.out.println("Landed on the Shorts - Bottoms - Men Page successfully");
         }
     }
 

@@ -13,6 +13,7 @@ import java.time.Duration;
 public class Main_Women_Page {
     WebDriver driver = null;
     Women_Page wp;
+    JavascriptExecutor js;
     @BeforeTest
     public void LaunchDriver(){
         driver = new ChromeDriver();
@@ -21,6 +22,7 @@ public class Main_Women_Page {
         driver.get("https://magento.softwaretestingboard.com/");
         wp = new Women_Page(driver);
         wp.login_with_valid_inputs();
+        js =(JavascriptExecutor) driver;
     }
     @Test(priority = 1)
     public void verify_Hoodies_Sweatshirts_page(){
@@ -28,7 +30,6 @@ public class Main_Women_Page {
         wp.select_tops();
         wp.click_hoodies();
         wp.Verify_hoodies_page_title("Hoodies & Sweatshirts - Tops - Women");
-        JavascriptExecutor js =(JavascriptExecutor) driver;
         js.executeScript("window.scrollBy(150,200)");
     }
     @Test(priority = 2)
@@ -37,7 +38,6 @@ public class Main_Women_Page {
         wp.select_tops();
         wp.click_jackets();
         wp.Verify_jackets_page_title("Jackets - Tops - Women");
-        JavascriptExecutor js =(JavascriptExecutor) driver;
         js.executeScript("window.scrollBy(150,200)");
     }
     @Test(priority = 3)
@@ -46,7 +46,6 @@ public class Main_Women_Page {
         wp.select_tops();
         wp.click_tees();
         wp.Verify_tees_page_title("Tees - Tops - Women");
-        JavascriptExecutor js =(JavascriptExecutor) driver;
         js.executeScript("window.scrollBy(150,200)");
     }
     @Test(priority = 4)
@@ -55,11 +54,24 @@ public class Main_Women_Page {
         wp.select_tops();
         wp.click_bt();
         wp.Verify_br_tanks_page_title("Bras & Tanks - Tops - Women");
-        JavascriptExecutor js =(JavascriptExecutor) driver;
         js.executeScript("window.scrollBy(150,200)");
     }
-
-
+    @Test(priority = 5)
+    public void verify_pants_page(){
+        wp.select_women();
+        wp.select_bottom();
+        wp.click_pants();
+        wp.Verify_pants_page_title("Pants - Bottoms - Women");
+        js.executeScript("window.scrollBy(150,200)");
+    }
+    @Test(priority = 6)
+    public void verify_shorts_page(){
+        wp.select_women();
+        wp.select_bottom();
+        wp.click_shorts();
+        wp.Verify_shorts_page_title("Shorts - Bottoms - Women");
+        js.executeScript("window.scrollBy(150,200)");
+    }
     @AfterTest
     public void CloseDriver() throws InterruptedException {
         Thread.sleep(3000);

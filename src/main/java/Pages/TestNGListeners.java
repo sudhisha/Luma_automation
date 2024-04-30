@@ -20,17 +20,6 @@ public class TestNGListeners implements ITestListener {
     }
 
     @Override
-    public void onTestSuccess(ITestResult result) {
-//        take screenshots
-//        WebDriver driver;
-//        Date date = new Date();
-//        String timestamp = date.toString().replace(":","_").replace(" ","_");
-//        File source = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-//        File dest = new File("src//main//java//Screenshots//success//"+timestamp+".jpg");
-//        FileUtils.copyFile(source,dest);
-    }
-
-    @Override
     public void onTestFailure(ITestResult result) {
 //        take screenshots
     }
