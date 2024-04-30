@@ -68,6 +68,7 @@ public class Main_Account {
         JavascriptExecutor js = (JavascriptExecutor)driver;
         js.executeScript("window.scrollBy(400,500)");
         try {
+//            Adding address as first time
             myacc.verify_firstname("Deepika");
             myacc.verify_lastname("K");
             myacc.enter_company("TCS");
@@ -81,6 +82,7 @@ public class Main_Account {
             myacc.click_save_address();
         }
         catch(Exception e){
+//            Adding a new address
             js.executeScript("window.scrollTo(0,document.body.scrollHeight)");
             myacc.click_add_new_address();
             myacc.verify_firstname("Deepika");
@@ -98,9 +100,9 @@ public class Main_Account {
             myacc.click_save_address();
         }
     }
-//    @AfterTest
-//    public void CloseDriver() throws InterruptedException {
-//        Thread.sleep(3000);
-//        driver.close();
-//    }
+    @AfterTest
+    public void CloseDriver() throws InterruptedException {
+        Thread.sleep(3000);
+        driver.close();
+    }
 }

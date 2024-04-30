@@ -7,6 +7,9 @@
         <classes>
             <class name="MainClass_Pages.Main_Login"></class>
             <class name="MainClass_Pages.Main_SignUp"></class>
+            <class name="MainClass_Pages.Main_Women_Page"></class>
+            <class name="MainClass_Pages.Main_Men_Page"></class>
+            <class name="MainClass_Pages.Main_Gear_Page"></class>
             <class name="MainClass_Pages.Main_Account"></class>
             <class name="MainClass_Pages.Main_Logout"></class>
         </classes>
