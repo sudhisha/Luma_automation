@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<!--https://github.com/sudhisha/Luma_automation.git-->
-<!--        https://github.com/sudhisha/Luma_automation-->
 <suite name="Luma Automation" parallel="classes">
     <test name="Regression Test">
         <classes>
             <class name="MainClass_Pages.Main_Login"></class>
             <class name="MainClass_Pages.Main_SignUp"></class>
+            <class name="MainClass_Pages.Main_Women_Page"></class>
+            <class name="MainClass_Pages.Main_Men_Page"></class>
+            <class name="MainClass_Pages.Main_Gear_Page"></class>
             <class name="MainClass_Pages.Main_Account"></class>
             <class name="MainClass_Pages.Main_Logout"></class>
         </classes>

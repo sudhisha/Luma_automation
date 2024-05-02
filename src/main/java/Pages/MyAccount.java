@@ -1,9 +1,12 @@
 package Pages;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.*;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.Select;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
+
+import java.time.Duration;
 
 public class MyAccount {
     WebDriver driver;
@@ -13,8 +16,8 @@ public class MyAccount {
     By customer_dropdown = By.xpath("/html/body/div[2]/header/div[1]/div/ul/li[2]/span/button");
     By myaccount = By.xpath("/html/body/div[2]/header/div[1]/div/ul/li[2]/div/ul/li[1]/a");
     By edit = By.xpath("//*[@id=\"maincontent\"]/div[2]/div[1]/div[4]/div[2]/div/div[2]/a[1]/span");
-    By firstname = By.id("firstname");
-    By lastname = By.id("lastname");
+    By first_name = By.id("firstname");
+    By last_name = By.id("lastname");
     By email_ckbox = By.name("change_email");
     By email_value = By.name("email");
     By cur_pswd = By.name("current_password");
@@ -25,6 +28,18 @@ public class MyAccount {
     By conf_password = By.name("password_confirmation");
     By address_book = By.xpath("//*[@id=\"block-collapsible-nav\"]/ul/li[6]/a");
     By company = By.name("company");
+    By phnum = By.name("telephone");
+    By street1 = By.id("street_1");
+    By street2 = By.id("street_2");
+    By street3 = By.id("street_3");
+    By city = By.id("city");
+    By state1 = By.name("region_id");
+    By zip = By.name("postcode");
+    By country = By.id("country");
+    By save_address_button = By.xpath(".//button[@title=\"Save Address\"]");
+    By add_new_address_button = By.xpath(".//button[@title=\"Add New Address\"]");
+    By billing_chkbox =By.id("primary_billing");
+    By shipping_chkbox =By.id("primary_shipping");
     public void login_with_valid_inputs(){
         Login obj = new Login(driver);
         obj.signin();
@@ -45,16 +60,13 @@ public class MyAccount {
         driver.findElement(edit).click();
     }
     public void verify_firstname(String fname){
-        String f_name = driver.findElement(firstname).getText();
+        String f_name = driver.findElement(first_name).getText();
         if(f_name.equals(fname)){
             System.out.println("First name is verified");
         }
-        else{
-            System.out.println("f_name"+driver.findElement(firstname).getText());
-        }
     }
     public void verify_lastname(String lname){
-        String l_name = driver.findElement(lastname).getText();
+        String l_name = driver.findElement(last_name).getText();
         if(l_name.equals(lname)){
             System.out.println("Last name is verified");
         }
@@ -107,4 +119,46 @@ public class MyAccount {
     public void Click_addressBook(){
         driver.findElement(address_book).click();
     }
+    public void enter_company(String cmpny){
+        driver.findElement(company).sendKeys(cmpny);
+    }
+    public void enter_phone_number(String ph_num){
+        driver.findElement(phnum).sendKeys(ph_num);
+    }
+    public void enter_street_address(String st1,String st2,String st3){
+        driver.findElement(street1).sendKeys(st1);
+        driver.findElement(street2).sendKeys(st2);
+        driver.findElement(street3).sendKeys(st3);
+    }
+    public void enter_city(String cty){
+        driver.findElement(city).sendKeys(cty);
+    }
+    public void enter_state(String ste){
+        WebElement state = driver.findElement(state1);
+        Select s = new Select(state);
+        s.selectByVisibleText(ste);
+//        s.selectByValue(ste);
+    }
+    public void enter_zip(String pin){
+        driver.findElement(zip).sendKeys(pin);
+    }
+    public void enter_country(String ctry){
+        WebElement cty = driver.findElement(country);
+        Select s = new Select(cty);
+//        s.selectByValue(ctry);
+        s.selectByVisibleText(ctry);
+    }
+    public void click_save_address() {
+        driver.findElement(save_address_button).click();
+    }
+    public void click_add_new_address() {
+        driver.findElement(add_new_address_button).click();
+    }
+    public void def_billing() {
+        driver.findElement(billing_chkbox).click();
+    }
+    public void def_shipping() {
+        driver.findElement(shipping_chkbox).click();
+    }
+
 }
