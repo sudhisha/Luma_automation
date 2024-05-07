@@ -2,6 +2,7 @@ package Pages;
 
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
+import org.testng.annotations.Test;
 
 public class Women_Page {
     WebDriver driver;
@@ -23,11 +24,19 @@ public class Women_Page {
     By qty = By.id("qty");
     By add_to_cart = By.xpath(".//button[@title=\"Add to Cart\"]");
     By product_name = By.xpath("//*[@id=\"maincontent\"]/div[2]/div/div[2]/div[1]/h1/span");
+    By product_name_wsh = By.xpath("//*[@id=\"maincontent\"]/div[2]/div/div[2]/div[1]/h1/span");
     By added_confn = By.xpath("//*[@id=\"maincontent\"]/div[1]/div[2]/div/div/div");
     By add_to_wishlist = By.xpath("//*[@id=\"maincontent\"]/div[2]/div/div[2]/div[5]/div/a[1]");
     By added_wsh_confn = By.xpath("//*[@id=\"maincontent\"]/div[1]/div[2]/div/div/div");
-    By add_to_comparelist = By.xpath("//*[@id=\"maincontent\"]/div[1]/div[2]/div/div/div");
+    By add_to_comparelist = By.xpath("//*[@id=\"maincontent\"]/div[2]/div/div[2]/div[5]/div/a[2]");
     By added_cmp_confn = By.xpath("//*[@id=\"maincontent\"]/div[1]/div[2]/div/div/div");
+    By cmpare_list_link = By.xpath("/html/body/div[2]/header/div[2]/ul/li/a");
+    By customer_dpdown = By.xpath("/html/body/div[2]/header/div[1]/div/ul/li[2]/span/button");
+    By wish_list_link = By.xpath("/html/body/div[2]/header/div[1]/div/ul/li[2]/div/ul/li[2]/a");
+    By mh_prod = By.xpath("/html/body/div[2]/main/div[2]/div[1]/form/div[1]/ol/li");
+    By rm_prod = By.xpath(".//a[@title=\"Remove Item\"]");
+    By added_rem_confn = By.xpath("//*[@id=\"maincontent\"]/div[1]/div[2]/div/div/div");
+    String pname = " ";
     public void login_with_valid_inputs(){
         Login obj = new Login(driver);
         obj.signin();
@@ -110,7 +119,7 @@ public class Women_Page {
         driver.findElement(color_green).click();
     }
     public void enter_qty(){
-        driver.findElement(qty).sendKeys(Keys.BACK_SPACE);
+        driver.findElement(qty).sendKeys(Keys.CONTROL+"a",Keys.BACK_SPACE);
         driver.findElement(qty).sendKeys("2");
     }
     public void click_add_to_cart_button(){
@@ -124,13 +133,16 @@ public class Women_Page {
         }
     }
     public void click_add_to_wishlist(){
+        pname = driver.findElement(product_name_wsh).getText();
         driver.findElement(add_to_wishlist).click();
     }
     public void verify_the_added_wishlist_message(){
-        String pname = driver.findElement(product_name).getText();
         String added_wsh_conf = driver.findElement(added_wsh_confn).getText();
         if(added_wsh_conf.contains(pname)){
-            System.out.println("Product "+pname+" added to wishlist successfully ");
+            System.out.println("Product "+pname+" has been added to wishlist successfully ");
+        }
+        if(driver.getTitle().contains("My Wish List")){
+            System.out.println("Landed on wishlist page successfully ");
         }
     }
     public void click_add_to_compare_list(){
@@ -143,6 +155,38 @@ public class Women_Page {
             System.out.println("Product "+pname+" added to compare list successfully ");
         }
     }
-
+    public void click_comparelist_link(){
+        driver.findElement(cmpare_list_link).click();
+    }
+    public void verify_comparelist_page(){
+        if(driver.getTitle().contains("Comparison")){
+            System.out.println("Landed on the Products Comparison List - Magento Commerce page successfully");
+        }
+    }
+    public void click_customer_dpdown(){
+        driver.findElement(customer_dpdown).click();
+    }
+    public void click_wishlist_link(){
+        driver.findElement(wish_list_link).click();
+    }
+    public void verify_wishlist_page(){
+        if(driver.getTitle().contains("My Wish List")){
+            System.out.println("Landed on wishlist page successfully ");
+        }
+    }
+    public void mousehover_on_product(){
+        Actions act = new Actions(driver);
+        act.moveToElement(driver.findElement(mh_prod)).perform();
+    }
+    public void remove_product(){
+        pname = driver.findElement(By.xpath("/html/body/div[2]/main/div[2]/div[1]/form/div[1]/ol/li[1]/div/strong/a")).getText();
+        driver.findElement(rm_prod).click();
+    }
+    public void verify_remove_product(){
+        String added_rem_conf = driver.findElement(added_rem_confn).getText();
+        if(added_rem_conf.contains(pname)){
+            System.out.println("Product "+pname+" has been removed from your wish list successfully ");
+        }
+    }
 
 }

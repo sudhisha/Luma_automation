@@ -121,6 +121,29 @@ public class Main_Women_Page {
         js.executeScript("window.scrollTo(0,0)","");
         wp.verify_the_added_comparelist_message();
     }
+    @Test(priority = 10)
+    public void view_compare_list() {
+        wp.click_comparelist_link();
+        wp.verify_comparelist_page();
+        js.executeScript("window.scrollBy(400,370)");
+    }
+    @Test(priority = 11)
+    public void view_wish_list() {
+        wp.click_customer_dpdown();
+        wp.click_wishlist_link();
+        wp.verify_wishlist_page();
+        js.executeScript("window.scrollBy(400,370)");
+    }
+    @Test(priority = 12)
+    public void remove_item_from_wish_list() {
+        wp.click_customer_dpdown();
+        wp.click_wishlist_link();
+        wp.verify_wishlist_page();
+        js.executeScript("window.scrollBy(400,370)");
+        wp.mousehover_on_product();
+        wp.remove_product();
+        wp.verify_remove_product();
+    }
     @AfterTest
     public void CloseDriver() throws InterruptedException {
         Thread.sleep(3000);
