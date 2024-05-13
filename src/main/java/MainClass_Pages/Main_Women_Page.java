@@ -14,6 +14,7 @@ public class Main_Women_Page {
     WebDriver driver = null;
     Women_Page wp;
     JavascriptExecutor js;
+
     @BeforeTest
     public void LaunchDriver(){
         driver = new ChromeDriver();
@@ -71,6 +72,77 @@ public class Main_Women_Page {
         wp.click_shorts();
         wp.Verify_shorts_page_title("Shorts - Bottoms - Women");
         js.executeScript("window.scrollBy(150,200)");
+    }
+    @Test(priority = 7)
+    public void add_to_cart() {
+        wp.select_women();
+        wp.select_tops();
+        wp.click_hoodies();
+        wp.Verify_hoodies_page_title("Hoodies & Sweatshirts - Tops - Women");
+        js.executeScript("window.scrollBy(400,370)");
+        wp.click_on_product_hoodie();
+        js.executeScript("window.scrollBy(150,200)");
+        wp.click_on_size_medium();
+        wp.select_color_green();
+        wp.enter_qty();
+        wp.click_add_to_cart_button();
+        js.executeScript("window.scrollTo(0,0)","");
+        wp.verify_the_added_cart_message();
+    }
+    @Test(priority = 8)
+    public void add_to_wishlist() {
+        wp.select_women();
+        wp.select_tops();
+        wp.click_hoodies();
+        wp.Verify_hoodies_page_title("Hoodies & Sweatshirts - Tops - Women");
+        js.executeScript("window.scrollBy(400,370)");
+        wp.click_on_product_hoodie();
+        js.executeScript("window.scrollBy(150,200)");
+        wp.click_on_size_medium();
+        wp.select_color_green();
+        wp.enter_qty();
+        wp.click_add_to_wishlist();
+        js.executeScript("window.scrollTo(0,0)","");
+        wp.verify_the_added_wishlist_message();
+    }
+    @Test(priority = 9)
+    public void add_to_compare_list() {
+        wp.select_women();
+        wp.select_tops();
+        wp.click_hoodies();
+        wp.Verify_hoodies_page_title("Hoodies & Sweatshirts - Tops - Women");
+        js.executeScript("window.scrollBy(400,370)");
+        wp.click_on_product_hoodie();
+        js.executeScript("window.scrollBy(150,200)");
+        wp.click_on_size_medium();
+        wp.select_color_green();
+        wp.enter_qty();
+        wp.click_add_to_compare_list();
+        js.executeScript("window.scrollTo(0,0)","");
+        wp.verify_the_added_comparelist_message();
+    }
+    @Test(priority = 10)
+    public void view_compare_list() {
+        wp.click_comparelist_link();
+        wp.verify_comparelist_page();
+        js.executeScript("window.scrollBy(400,370)");
+    }
+    @Test(priority = 11)
+    public void view_wish_list() {
+        wp.click_customer_dpdown();
+        wp.click_wishlist_link();
+        wp.verify_wishlist_page();
+        js.executeScript("window.scrollBy(400,370)");
+    }
+    @Test(priority = 12)
+    public void remove_item_from_wish_list() {
+        wp.click_customer_dpdown();
+        wp.click_wishlist_link();
+        wp.verify_wishlist_page();
+        js.executeScript("window.scrollBy(400,370)");
+        wp.mousehover_on_product();
+        wp.remove_product();
+        wp.verify_remove_product();
     }
     @AfterTest
     public void CloseDriver() throws InterruptedException {
